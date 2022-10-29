@@ -9,6 +9,8 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 
+import logo from "../images/weedbay-logo.png";
+
 type Props = {};
 
 function Header({}: Props) {
@@ -54,12 +56,11 @@ function Header({}: Props) {
         <div className="h-16 w-16 sm:w-28 md:44 cursor-pointer flex-shrink-0">
           <Link href="/">
             <Image
+              src={logo}
               className="h-full w-full object-contain"
               alt="Thirdweb Logo"
-              src="https://links.papareact.com/bdb"
-              width={100}
-              height={100}
             />
+            <img />
           </Link>
         </div>
 
@@ -77,12 +78,12 @@ function Header({}: Props) {
           />
         </div>
 
-        <button className="hidden sm:inline bg-blue-600 text-white px-5 md:px-10 py-2 border-2 border-blue-600">
+        <button className="hidden sm:inline bg-green-700 text-white px-5 md:px-10 py-2 border-2 border-green-700">
           Search
         </button>
 
         <Link href="/create">
-          <button className="border-2 border-blue-600 px-5 md:px-10 py-2 text-blue-600 hover:bg-blue-600 hover:text-white cursor-pointer">
+          <button className="border-2 border-green-700 px-5 md:px-10 py-2 text-green-700 hover:bg-green-700 hover:text-white cursor-pointer">
             List Item
           </button>
         </Link>

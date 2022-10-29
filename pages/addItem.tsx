@@ -2,6 +2,7 @@ import React, { FormEvent, useState } from "react";
 import Header from "../components/Header";
 import { useAddress, useContract } from "@thirdweb-dev/react";
 import { useRouter } from "next/router";
+import toast, { Toaster } from "react-hot-toast";
 
 type Props = {};
 
@@ -37,6 +38,8 @@ function addItem({}: Props) {
       image: image, // image URL or file
     };
 
+    toast.loading("Creating new item...");
+
     try {
       const tx = await contract.mintTo(address, metadata);
 
@@ -46,8 +49,15 @@ function addItem({}: Props) {
 
       console.log(receipt, tokendId, nft);
 
-      router.push("/"); //back to the home screen;
+      toast.dismiss();
+      toast.success("New item has been created!");
+      setTimeout(() => {
+        router.push("/");
+      }, 1500);
+      //back to the home screen;
     } catch (error) {
+      toast.dismiss();
+      toast.error("New item has not been created");
       console.error(error);
     }
   };
@@ -57,6 +67,7 @@ function addItem({}: Props) {
       <Header />
 
       <main className="max-w-6xl mx-auto p-10 border">
+        <Toaster />
         <h1 className="text-4xl font-bold">Add an Item to the Marketplace</h1>
         <h2 className="text-xl font-semibold pt-5">Item Details</h2>
         <p className="pb-5">
@@ -106,7 +117,7 @@ function addItem({}: Props) {
 
             <button
               type="submit"
-              className="bg-blue-600 font-bold text-white rounded-full py-4 px-10 w-56 mt-5 mx-auto md:mt-auto ml-auto"
+              className="bg-green-700 font-bold text-white rounded-full py-4 px-10 w-56 mt-5 mx-auto md:mt-auto ml-auto"
             >
               Add/Mint Item
             </button>

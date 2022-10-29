@@ -1,4 +1,4 @@
-import React, { FormEvent, FormHTMLAttributes, useState } from "react";
+import React, { FormEvent, useState } from "react";
 import Header from "../components/Header";
 import {
   useAddress,
@@ -19,6 +19,7 @@ import {
 } from "@thirdweb-dev/sdk";
 import { SwitchChainError } from "wagmi-core";
 import network from "../utils/network";
+import toast, { Toaster } from "react-hot-toast";
 
 type Props = {};
 
@@ -77,6 +78,8 @@ function Create({}: Props) {
 
     const { listingType, price } = target.elements;
 
+    toast.loading("Listing new item...");
+
     if (listingType.value === "directListing") {
       createDirectListing(
         {
@@ -90,10 +93,16 @@ function Create({}: Props) {
         },
         {
           onSuccess(data, variables, context) {
+            toast.dismiss();
+            toast.success("Item has been listed");
             console.log("Success", data, variables, context);
-            router.push("/");
+            setTimeout(() => {
+              router.push("/");
+            }, 1500);
           },
           onError(error, variables, context) {
+            toast.dismiss();
+            toast.error("Item has not been listed");
             console.log("Error", error, variables, context);
           },
         }
@@ -114,10 +123,16 @@ function Create({}: Props) {
         },
         {
           onSuccess(data, variables, context) {
+            toast.dismiss();
+            toast.success("Item has been added");
             console.log("Success", data, variables, context);
-            router.push("/");
+            setTimeout(() => {
+              router.push("/");
+            }, 1500);
           },
           onError(error, variables, context) {
+            toast.dismiss();
+            toast.error("Item has not been added");
             console.log("Error", error, variables, context);
           },
         }
@@ -130,6 +145,7 @@ function Create({}: Props) {
       <Header />
 
       <main className="max-w-6xl mx-auto p-10 pt-2">
+        <Toaster />
         <h1 className="text-4xl font-bold">List an Item</h1>
         <h2 className="text-xl font-semibold pt-5 pb-2">
           Select an Item you would like to Sell
@@ -145,7 +161,7 @@ function Create({}: Props) {
               onClick={() => setSelectedNft(nft)}
               className={`flex flex-col space-y-2 card min-w-fill max-w-sm border-2 bg-gray-100 ${
                 nft.metadata.id === selectedNft?.metadata.id
-                  ? "border-black"
+                  ? "border-green-700"
                   : "border-transparent"
               }`}
               key={nft.metadata.id}
@@ -189,7 +205,7 @@ function Create({}: Props) {
                   className="bg-gray-100 p-5 rounded-lg"
                 />
               </div>
-              <button className="bg-blue-600 text-white rounded-lg p-4 mt-8">
+              <button className="bg-green-700 text-white rounded-lg p-4 mt-8">
                 Create a Listing
               </button>
             </div>
