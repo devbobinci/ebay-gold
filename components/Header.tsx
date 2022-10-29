@@ -17,7 +17,7 @@ function Header({}: Props) {
   const address = useAddress();
 
   return (
-    <div className="max-w-6xl mx-auto py-2 px-2">
+    <div className="max-w-6xl mx-auto py-2 px-2 ">
       <nav className="flex justify-between">
         <div className="flex items-center space-x-2 text-sm">
           {address ? (
@@ -81,7 +81,7 @@ function Header({}: Props) {
           Search
         </button>
 
-        <Link href="/listItem">
+        <Link href="/create">
           <button className="border-2 border-blue-600 px-5 md:px-10 py-2 text-blue-600 hover:bg-blue-600 hover:text-white cursor-pointer">
             List Item
           </button>
