@@ -95,7 +95,6 @@ function Create({}: Props) {
           onSuccess(data, variables, context) {
             toast.dismiss();
             toast.success("Item has been listed");
-            console.log("Success", data, variables, context);
             setTimeout(() => {
               router.push("/");
             }, 1500);
@@ -103,7 +102,6 @@ function Create({}: Props) {
           onError(error, variables, context) {
             toast.dismiss();
             toast.error("Item has not been listed");
-            console.log("Error", error, variables, context);
           },
         }
       );
@@ -125,7 +123,6 @@ function Create({}: Props) {
           onSuccess(data, variables, context) {
             toast.dismiss();
             toast.success("Item has been added");
-            console.log("Success", data, variables, context);
             setTimeout(() => {
               router.push("/");
             }, 1500);
@@ -133,7 +130,6 @@ function Create({}: Props) {
           onError(error, variables, context) {
             toast.dismiss();
             toast.error("Item has not been added");
-            console.log("Error", error, variables, context);
           },
         }
       );

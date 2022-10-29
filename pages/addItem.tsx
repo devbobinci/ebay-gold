@@ -47,8 +47,6 @@ function addItem({}: Props) {
       const tokendId = tx.id; // the id of the NFT minted
       const nft = await tx.data(); // (optional) fetch details of mintd NFT
 
-      console.log(receipt, tokendId, nft);
-
       toast.dismiss();
       toast.success("New item has been created!");
       setTimeout(() => {

@@ -112,7 +112,6 @@ function ListingPage() {
         onSuccess(data, variables, context) {
           toast.dismiss();
           toast.success("NFT has been bought");
-          console.log("SUCCESS", data, variables, context);
           setTimeout(() => {
             router.replace("/");
           }, 1500);
@@ -120,7 +119,6 @@ function ListingPage() {
         onError(error, variables, context) {
           toast.dismiss();
           toast.error("NFT could not be bought");
-          console.log("ERROR", error, variables, context);
         },
       }
     );
@@ -140,13 +138,11 @@ function ListingPage() {
           listing.buyoutPrice.toString() ===
           ethers.utils.parseEther(bidAmount).toString()
         ) {
-          console.log("Buyout Price met, buying NFT...");
           buyNft();
           return;
         }
 
         toast.loading("Making an offer...");
-        console.log("Buyout price not met, making offer...");
         await makeOffer(
           {
             quantity: 1,
@@ -157,13 +153,11 @@ function ListingPage() {
             onSuccess(data, variables, context) {
               toast.dismiss();
               toast.success("Offer made successfully");
-              console.log("Success", data, variables, context);
               setBidAmount("");
             },
             onError(error, variables, context) {
               toast.dismiss();
               toast.error("Offer not made");
-              console.log("Error:", error, variables, context);
             },
           }
         );
@@ -173,7 +167,6 @@ function ListingPage() {
 
       if (listing?.type === ListingType.Auction) {
         toast.loading("Bidding an auction...");
-        console.log("Making Bid...");
 
         await makeBid(
           {
@@ -184,19 +177,15 @@ function ListingPage() {
             onSuccess(data, variables, context) {
               toast.dismiss();
               toast.success("Bid made successfully");
-              console.log("Success", data, variables, context);
             },
             onError(error, variables, context) {
               toast.dismiss();
               toast.error("Bid not made");
-              console.log("Error", error, variables, context);
             },
           }
         );
       }
-    } catch (error) {
-      console.error(error);
-    }
+    } catch (error) {}
   };
 
   if (isLoading)
@@ -298,22 +287,10 @@ function ListingPage() {
                               {
                                 onSuccess(data, variables, context) {
                                   alert("Offer accepted successfully!");
-                                  console.log(
-                                    "Success",
-                                    data,
-                                    variables,
-                                    context
-                                  );
                                   router.replace("/");
                                 },
                                 onError(error, variables, context) {
                                   alert("Offer cannot be accepted");
-                                  console.log(
-                                    "Error",
-                                    error,
-                                    variables,
-                                    context
-                                  );
                                 },
                               }
                             )
