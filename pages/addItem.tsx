@@ -115,7 +115,7 @@ function addItem({}: Props) {
 
             <button
               type="submit"
-              className="bg-green-700 font-bold text-white rounded-full py-4 px-10 w-56 mt-5 mx-auto md:mt-auto ml-auto"
+              className="bg-[#FFE161] font-bold text-white rounded-full py-4 px-10 w-56 mt-5 mx-auto md:mt-auto ml-auto"
             >
               Add/Mint Item
             </button>

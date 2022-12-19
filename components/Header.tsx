@@ -2,6 +2,7 @@ import React from "react";
 import { useAddress, useDisconnect, useMetamask } from "@thirdweb-dev/react";
 import Link from "next/link";
 import Image from "next/image";
+import Head from "next/head";
 import {
   BellIcon,
   ShoppingCartIcon,
@@ -9,7 +10,7 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 
-import logo from "../images/weedbay-logo.png";
+import logo from "../images/goldbay.png";
 
 type Props = {};
 
@@ -20,6 +21,12 @@ function Header({}: Props) {
 
   return (
     <div className="max-w-6xl mx-auto py-2 px-2 ">
+      <Head>
+        <title>Goldbay</title>
+        <link rel="icon" href="/public/gold-icon.png" />
+        <meta name="description" content="Buy some gold with MATIC Currency" />
+      </Head>
+
       <nav className="flex justify-between">
         <div className="flex items-center space-x-2 text-sm">
           {address ? (
@@ -78,12 +85,12 @@ function Header({}: Props) {
           />
         </div>
 
-        <button className="hidden sm:inline bg-green-700 text-white px-5 md:px-10 py-2 border-2 border-green-700">
+        <button className="hidden sm:inline bg-base text-white px-5 md:px-10 py-2 border-2 border-[#FFE161]">
           Search
         </button>
 
         <Link href="/create">
-          <button className="border-2 border-green-700 px-5 md:px-10 py-2 text-green-700 hover:bg-green-700 hover:text-white cursor-pointer">
+          <button className="border-2 border-base px-5 md:px-10 py-2 text-[#FFE161] hover:bg-base hover:text-white cursor-pointer">
             List Item
           </button>
         </Link>

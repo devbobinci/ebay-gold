@@ -192,7 +192,7 @@ function ListingPage() {
     return (
       <div>
         <Header />
-        <div className="text-center animate-pulse text-green-700">
+        <div className="text-center animate-pulse text-base">
           <p>Loading Item...</p>
         </div>
       </div>

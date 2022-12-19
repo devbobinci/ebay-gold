@@ -20,13 +20,15 @@ const Home = () => {
   const { data: listings, isLoading: loadingListings } =
     useActiveListings(contract);
 
+  console.log(listings);
+
   return (
-    <div className="">
+    <div>
       <Header />
 
       <main className="max-w-6xl mx-auto py-2 px-6">
         {loadingListings ? (
-          <p className="text-center animate-pulse text-green-700">
+          <p className="text-center animate-pulse text-base">
             Loading listings
           </p>
         ) : (

@@ -157,7 +157,7 @@ function Create({}: Props) {
               onClick={() => setSelectedNft(nft)}
               className={`flex flex-col space-y-2 card min-w-fill max-w-sm border-2 bg-gray-100 ${
                 nft.metadata.id === selectedNft?.metadata.id
-                  ? "border-green-700"
+                  ? "border-base"
                   : "border-transparent"
               }`}
               key={nft.metadata.id}
@@ -201,7 +201,7 @@ function Create({}: Props) {
                   className="bg-gray-100 p-5 rounded-lg"
                 />
               </div>
-              <button className="bg-green-700 text-white rounded-lg p-4 mt-8">
+              <button className="bg-base text-white rounded-lg p-4 mt-8">
                 Create a Listing
               </button>
             </div>
